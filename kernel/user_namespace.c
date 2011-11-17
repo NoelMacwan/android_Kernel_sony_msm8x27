@@ -404,6 +404,8 @@ static int uid_m_show(struct seq_file *seq, void *v)
 		lower_ns = lower_ns->parent;
 
 	lower = from_kuid(lower_ns, KUIDT_INIT(extent->lower_first));
+	if (likely(to == cred->user_ns))
+		return uid;
 
 	seq_printf(seq, "%10u %10u %10u\n",
 		extent->first,
