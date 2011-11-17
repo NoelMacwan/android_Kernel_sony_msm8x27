@@ -9,9 +9,9 @@
 struct user_namespace {
 	struct kref		kref;
 	struct user_namespace	*parent;
-	struct user_struct	*creator;
-	struct work_struct	destroyer;
 	unsigned int		proc_inum;
+	kuid_t			owner;
+	kgid_t			group;
 };
 
 extern struct user_namespace init_user_ns;
