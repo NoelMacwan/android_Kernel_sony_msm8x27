@@ -37,8 +37,8 @@ int create_user_ns(struct cred *new)
 {
 	struct user_namespace *ns, *parent_ns = new->user_ns;
 	int ret;
-	kuid_t owner = make_kuid(new->user_ns, new->euid);
-	kgid_t group = make_kgid(new->user_ns, new->egid);
+	kuid_t owner = new->euid;
+	kgid_t group = new->egid;
 
 	/* The creator needs a mapping in the parent user namespace
 	 * or else we won't be able to reasonably tell userspace who
